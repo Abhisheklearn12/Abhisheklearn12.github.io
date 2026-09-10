@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,23 +23,29 @@
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@1.17.0"></script>
+    <script src="../assets/theme.js"></script>
 
     <style>
+      html {
+        background-color: #ffffff;
+      }
+      html.dark,
       html.dark body {
-        background-color: #0a0a0a;
+        background-color: #0d1117;
+        color-scheme: dark;
       }
       html.dark .text-gray-900,
       html.dark .text-gray-800,
       html.dark .text-gray-700 {
-        color: #ededed;
+        color: #e6edf3;
       }
       html.dark .text-gray-600,
       html.dark .text-gray-500 {
-        color: #a1a1aa;
+        color: #9da7b1;
       }
       html.dark .border-gray-200,
       html.dark .border-gray-300 {
-        border-color: #262626;
+        border-color: #30363d;
       }
       .theme-icon-moon {
         display: none;
@@ -94,28 +100,50 @@
 
     <!-- Books -->
     <section class="mt-10">
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">Books</h2>
+      <h2 class="text-xl sm:text-2xl font-semibold mb-4">Favorite books</h2>
       <p class="text-gray-700 mb-6">
-        Books I keep coming back to.
+        A few technical books I keep coming back to.
       </p>
 
       <ul class="space-y-5 text-gray-700">
-        <!--
-          Copy one <li> per book:
+        <li>
+          <span class="font-medium text-gray-900">
+            Computer Architecture: A Quantitative Approach
+          </span>
+          <span class="block text-gray-500 mt-0.5">
+            John L. Hennessy and David A. Patterson
+          </span>
+          <p class="text-gray-600 mt-1">
+            I love how it connects low-level design choices to performance you
+            can actually measure and reason about.
+          </p>
+        </li>
 
-          <li>
-            <span class="font-medium text-gray-900">Title</span>
-            <span class="text-gray-500">— Author</span>
-            <p class="text-gray-600 mt-1">One line on why it stuck with you.</p>
-          </li>
-        -->
+        <li>
+          <span class="font-medium text-gray-900">
+            Designing Data-Intensive Applications
+          </span>
+          <span class="block text-gray-500 mt-0.5">Martin Kleppmann</span>
+          <p class="text-gray-600 mt-1">
+            I keep coming back to this whenever I need to think clearly about
+            data, scale, and distributed systems trade-offs.
+          </p>
+        </li>
+
+        <li>
+          <span class="font-medium text-gray-900">
+            Systems Performance: Enterprise and the Cloud
+          </span>
+          <span class="block text-gray-500 mt-0.5">Brendan Gregg</span>
+          <p class="text-gray-600 mt-1">
+            I like its evidence-first mindset: measure what the system is doing,
+            find the real bottleneck, and then optimize what matters.
+          </p>
+        </li>
       </ul>
     </section>
 
     <script>
-      document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-      });
       lucide.createIcons();
     </script>
   </body>

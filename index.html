@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Abhishek — Infra/System's Engineer</title>
+        <title>Abhishek | Infra/System's Engineer</title>
 
         <link rel="icon" type="image/jpeg" href="./assets/avatar.jpg" />
 
@@ -23,23 +23,29 @@
 
         <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
         <script src="https://unpkg.com/lucide@1.17.0"></script>
+        <script src="./assets/theme.js"></script>
 
         <style>
+            html {
+                background-color: #ffffff;
+            }
+            html.dark,
             html.dark body {
-                background-color: #0a0a0a;
+                background-color: #0d1117;
+                color-scheme: dark;
             }
             html.dark .text-gray-900,
             html.dark .text-gray-800,
             html.dark .text-gray-700 {
-                color: #ededed;
+                color: #e6edf3;
             }
             html.dark .text-gray-600,
             html.dark .text-gray-500 {
-                color: #a1a1aa;
+                color: #9da7b1;
             }
             html.dark .border-gray-200,
             html.dark .border-gray-300 {
-                border-color: #262626;
+                border-color: #30363d;
             }
             .theme-icon-moon {
                 display: none;
@@ -49,6 +55,122 @@
             }
             html.dark .theme-icon-moon {
                 display: inline-flex;
+            }
+            .contribution-card {
+                background: #f5f4f1;
+                border-left: 6px solid #b44927;
+                border-radius: 0 0.8rem 0.8rem 0;
+                padding: 1rem 1.3rem 0.9rem;
+            }
+            .featured-contributions-grid {
+                position: relative;
+                left: 50%;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.25rem;
+                width: min(1200px, calc(100vw - 3rem));
+                transform: translateX(-50%);
+            }
+            .contribution-card-header {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+            .contribution-card-header h3 {
+                font-size: 1.3rem;
+                line-height: 1.35;
+            }
+            .contribution-card-links {
+                display: flex;
+                flex-shrink: 0;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 0.35rem;
+                font-weight: 600;
+                color: #b44927;
+            }
+            .featured-pr-link {
+                border-bottom: 1px solid #d1d5db;
+                line-height: 1.2;
+            }
+            .featured-pr-link:hover {
+                border-color: #b44927;
+            }
+            .contribution-card-list {
+                margin-top: 0.55rem;
+                padding-left: 1.25rem;
+                list-style: disc outside;
+            }
+            .contribution-card-list li + li {
+                margin-top: 0.45rem;
+            }
+            .contribution-card-list li::marker {
+                color: #b44927;
+            }
+            .contribution-card strong {
+                font-weight: 700;
+            }
+            .pr-link {
+                display: inline-flex;
+                align-items: center;
+                border: 1px solid #d1d5db;
+                border-radius: 9999px;
+                padding: 0.2rem 0.55rem;
+                transition:
+                    color 0.2s ease,
+                    border-color 0.2s ease;
+            }
+            .pr-link:hover {
+                color: #ea580c;
+                border-color: #fb923c;
+            }
+            html.dark .contribution-card {
+                background: #161b22;
+                border-left-color: #d15b36;
+            }
+            html.dark .featured-pr-link {
+                border-color: #30363d;
+            }
+            html.dark .pr-link {
+                border-color: #30363d;
+            }
+            .oss-project {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .oss-project:first-child {
+                padding-top: 0;
+            }
+            .oss-project:last-child {
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+            .oss-pr {
+                display: grid;
+                grid-template-columns: max-content minmax(0, 1fr);
+                align-items: baseline;
+                gap: 0.65rem;
+                margin-top: 0.5rem;
+            }
+            html.dark .oss-project {
+                border-color: #21262d;
+            }
+            @media (max-width: 767px) {
+                .featured-contributions-grid {
+                    left: auto;
+                    grid-template-columns: minmax(0, 1fr);
+                    width: 100%;
+                    transform: none;
+                }
+                .contribution-card-header {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    gap: 0.35rem;
+                }
+                .contribution-card-links {
+                    justify-content: flex-start;
+                }
             }
         </style>
     </head>
@@ -119,8 +241,167 @@
                 <li>Low-Level Systems &amp; System Internals</li>
                 <li>Distributed Systems</li>
                 <li>ML Inference &amp; Performance Engineering</li>
-                <li>High-Performance Computing</li>
+                <li>High-Performance Engineering</li>
             </ul>
+        </section>
+
+        <!-- Open Source -->
+        <section class="mt-12">
+            <h2 class="text-xl sm:text-2xl font-semibold mb-5">
+                🌱 Open Source Contributions
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-2">
+                Some of my open source contributions.
+            </p>
+
+            <div class="featured-contributions-grid mt-7">
+                <!-- Arrow-RS casting -->
+                <article class="contribution-card">
+                    <div class="contribution-card-header">
+                        <h3 class="font-semibold">Apache Arrow-RS</h3>
+                        <div class="contribution-card-links">
+                            <a class="featured-pr-link" href="https://github.com/apache/arrow-rs/pull/10436" target="_blank" rel="noopener noreferrer">#10436</a>
+                            <span aria-hidden="true">·</span>
+                            <a class="featured-pr-link" href="https://github.com/apache/arrow-rs/pull/10510" target="_blank" rel="noopener noreferrer">#10510</a>
+                            <span aria-hidden="true">·</span>
+                            <a class="featured-pr-link" href="https://github.com/apache/arrow-rs/pull/10596" target="_blank" rel="noopener noreferrer">#10596</a>
+                        </div>
+                    </div>
+                    <ul class="contribution-card-list text-gray-700 leading-snug">
+                        <li>
+                            Diagnosed a <strong class="text-gray-900">cardinality crossover</strong> between indexed gathering and direct per-row view construction, characterizing when each strategy is faster.
+                        </li>
+                        <li>
+                            Engineered <strong class="text-gray-900">cardinality-gated fast paths</strong> across Utf8/Binary variants, with safe/strict Binary/LargeBinary→Utf8View validation, oversized-buffer fallback, and null-value preservation.
+                        </li>
+                        <li>
+                            Two Apache Neoverse-V2 runs measured dense casting at <strong class="text-gray-900">46.2→16.5μs (64.3%)</strong> and sparse Binary→Utf8View at <strong class="text-gray-900">159.7→57.4μs and 159.2→44.7μs (64.1% to 71.9%);</strong> correctness was validated against take-then-cast.
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- ParadeDB SegmentedTopK -->
+                <article class="contribution-card">
+                    <div class="contribution-card-header">
+                        <h3 class="font-semibold">ParadeDB</h3>
+                        <div class="contribution-card-links">
+                            <a class="featured-pr-link" href="https://github.com/paradedb/paradedb/pull/5455" target="_blank" rel="noopener noreferrer">#5455</a>
+                            <span aria-hidden="true">·</span>
+                            <a class="featured-pr-link" href="https://github.com/paradedb/paradedb/pull/5380" target="_blank" rel="noopener noreferrer">#5380</a>
+                        </div>
+                    </div>
+                    <ul class="contribution-card-list text-gray-700 leading-snug">
+                        <li>
+                            Replaced per-row O(log K) BinaryHeap push/pop with <strong class="text-gray-900">amortized O(1) Vec buffering plus linear QuickSelect</strong> at 2K boundaries, preserving per-segment Top-K results.
+                        </li>
+                        <li>
+                            Absorbed a direct-child VisibilityFilterExec into SegmentedTopKExec; visibility plans use per-segment buffer capacity max(2K, 8,192) and <strong class="text-gray-900">remove MVCC-invisible rows before QuickSelect,</strong> cutoff derivation and threshold publication.
+                        </li>
+                        <li>
+                            Locally validated PostgreSQL-equivalent output on a 30,000-row early-prune workload; passed randomized multi-segment Top-K property tests, join/sort integration, mpp_joinscan and <strong class="text-gray-900">all 292 regression tests.</strong>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Mesh-LLM hash cache -->
+                <article class="contribution-card">
+                    <div class="contribution-card-header">
+                        <h3 class="font-semibold">Mesh-LLM</h3>
+                        <div class="contribution-card-links">
+                            <a class="featured-pr-link" href="https://github.com/Mesh-LLM/mesh-llm/pull/962" target="_blank" rel="noopener noreferrer">#962</a>
+                        </div>
+                    </div>
+                    <ul class="contribution-card-list text-gray-700 leading-snug">
+                        <li>
+                            Avoided repeated full-file SHA-256 reads for unchanged direct-GGUF sources by <strong class="text-gray-900">reusing persisted digests on validated cache hits.</strong>
+                        </li>
+                        <li>
+                            Validated canonical path, size, mtime and ctime where supported; enforced version, algorithm and digest checks, non-UTF-8-path bypass, <strong class="text-gray-900">concurrent-writer-safe write-then-rename publication</strong> and fail-open cache handling.
+                        </li>
+                        <li>
+                            A local cache-hit probe reduced unchanged 1-GiB validation from <strong class="text-gray-900">approximately 650 ms to 80–125 μs, about 99.98% lower latency;</strong> added 18 tests covering invalidation, corruption, replacement, write failures and concurrent writers.
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Arrow-RS REE JSON -->
+                <article class="contribution-card">
+                    <div class="contribution-card-header">
+                        <h3 class="font-semibold">Apache Arrow-RS</h3>
+                        <div class="contribution-card-links">
+                            <a class="featured-pr-link" href="https://github.com/apache/arrow-rs/pull/9379" target="_blank" rel="noopener noreferrer">#9379</a>
+                        </div>
+                    </div>
+                    <ul class="contribution-card-list text-gray-700 leading-snug">
+                        <li>
+                            Added arrow-json reader/writer support for <strong class="text-gray-900">Run-End Encoded arrays;</strong> the reader dispatches Int16/Int32/Int64 run-end indexes, while the writer maps logical indexes to physical values.
+                        </li>
+                        <li>
+                            Implemented consecutive equal-value and null-run coalescing, checked run-end overflow, empty-input construction and <strong class="text-gray-900">explicit safety invariants for unchecked ArrayData construction.</strong>
+                        </li>
+                        <li>
+                            Added <strong class="text-gray-900">seven tests</strong> covering reads, round trips, null runs, unique values, Int16/Int32 run ends and string/integer values.
+                        </li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="mt-8">
+                <h3 class="text-base font-semibold">Other open source contributions</h3>
+                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                    Smaller, focused contributions across projects I use and follow.
+                </p>
+                <ul class="mt-4 text-sm text-gray-600">
+                    <li class="oss-project">
+                        <span class="font-semibold text-gray-900">LanceDB</span>
+                        <div>
+                            <div class="oss-pr">
+                                <a class="pr-link text-xs" href="https://github.com/lancedb/lancedb/pull/2979" target="_blank" rel="noopener noreferrer">PR #2979</a>
+                                <span>Moved <strong class="font-medium text-gray-900">table optimization code</strong> into a dedicated module without changing the public API.</span>
+                            </div>
+                            <div class="oss-pr">
+                                <a class="pr-link text-xs" href="https://github.com/lancedb/lancedb/pull/2973" target="_blank" rel="noopener noreferrer">PR #2973</a>
+                                <span>Moved <strong class="font-medium text-gray-900">schema-evolution code</strong> into a dedicated module without changing the public API.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="oss-project">
+                        <span class="font-semibold text-gray-900">Turso</span>
+                        <div class="oss-pr">
+                            <a class="pr-link text-xs" href="https://github.com/tursodatabase/turso/pull/5831" target="_blank" rel="noopener noreferrer">PR #5831</a>
+                            <span>Fixed empty JSON aggregates to return <strong class="font-medium text-gray-900"><code>[]</code> or <code>{}</code> instead of <code>NULL</code></strong>.</span>
+                        </div>
+                    </li>
+                    <li class="oss-project">
+                        <span class="font-semibold text-gray-900">Arrow-RS</span>
+                        <div class="oss-pr">
+                            <a class="pr-link text-xs" href="https://github.com/apache/arrow-rs/pull/9363" target="_blank" rel="noopener noreferrer">PR #9363</a>
+                            <span>Added <strong class="font-medium text-gray-900"><code>BinaryView</code> support</strong> and null coverage to the <code>bit_length</code> kernel.</span>
+                        </div>
+                    </li>
+                    <li class="oss-project">
+                        <span class="font-semibold text-gray-900">ParadeDB</span>
+                        <div class="oss-pr">
+                            <a class="pr-link text-xs" href="https://github.com/paradedb/paradedb/pull/4311" target="_blank" rel="noopener noreferrer">PR #4311</a>
+                            <span>Kept parallel <code>JoinScan</code> workers on <strong class="font-medium text-gray-900">one canonical segment view</strong>.</span>
+                        </div>
+                    </li>
+                    <li class="oss-project">
+                        <span class="font-semibold text-gray-900">Rerun</span>
+                        <div class="oss-pr">
+                            <a class="pr-link text-xs" href="https://github.com/rerun-io/rerun/pull/12708" target="_blank" rel="noopener noreferrer">PR #12708</a>
+                            <span>Corrected <strong class="font-medium text-gray-900">Collada mesh orientation</strong> using each file's <code>up_axis</code>.</span>
+                        </div>
+                    </li>
+                    <li class="oss-project">
+                        <span class="font-semibold text-gray-900">Memvid</span>
+                        <div class="oss-pr">
+                            <a class="pr-link text-xs" href="https://github.com/memvid/memvid/pull/178" target="_blank" rel="noopener noreferrer">PR #178</a>
+                            <span>Changed implicit multi-word search from <strong class="font-medium text-gray-900"><code>OR</code> to <code>AND</code></strong>, improving result precision while reducing downstream search work.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <!-- Contact -->
@@ -170,130 +451,7 @@
             </ul>
         </section>
 
-        <!-- Open Source -->
-        <section class="mt-12">
-            <h2 class="text-xl sm:text-2xl font-semibold mb-5">
-                🌱 Open Source Contributions
-            </h2>
-            <p class="text-gray-700 mb-5">
-                I have contributed into
-                <span class="font-medium">ParadeDB</span>,
-                <span class="font-medium">arrow-rs</span>,
-                <span class="font-medium">LanceDB</span>,
-                <span class="font-medium">Turso DB</span>,
-                <span class="font-medium">Mesh-LLM</span>,
-                <span class="font-medium">Rerun</span> etc.
-            </p>
-            <ul class="list-disc list-inside space-y-3 text-gray-700">
-                <li class="break-words">
-                    ParadeDB:
-                    <a
-                        href="https://github.com/paradedb/paradedb/pull/5455"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >paradedb#5455</a
-                    >,
-                    <a
-                        href="https://github.com/paradedb/paradedb/pull/5380"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >paradedb#5380</a
-                    >,
-                    <a
-                        href="https://github.com/paradedb/paradedb/pull/4311"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >paradedb#4311</a
-                    >
-                </li>
-                <li class="break-words">
-                    arrow-rs:
-                    <a
-                        href="https://github.com/apache/arrow-rs/pull/9379"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >arrow-rs#9379</a
-                    >,
-                    <a
-                        href="https://github.com/apache/arrow-rs/pull/9363"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >arrow-rs#9363</a
-                    >
-                </li>
-                <li class="break-words">
-                    LanceDB:
-                    <a
-                        href="https://github.com/lancedb/lancedb/pull/2979"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >lancedb#2979</a
-                    >,
-                    <a
-                        href="https://github.com/lancedb/lancedb/pull/2973"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >lancedb#2973</a
-                    >
-                </li>
-                <li class="break-words">
-                    Turso DB:
-                    <a
-                        href="https://github.com/tursodatabase/turso/pull/5831"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >turso#5831</a
-                    >
-                </li>
-                <li class="break-words">
-                    Mesh-LLM:
-                    <a
-                        href="https://github.com/Mesh-LLM/mesh-llm/pull/962"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >mesh-llm#962</a
-                    >
-                </li>
-                <li class="break-words">
-                    Rerun:
-                    <a
-                        href="https://github.com/rerun-io/rerun/pull/12708"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >rerun#12708</a
-                    >
-                </li>
-                <li class="break-words">
-                    Memvid:
-                    <a
-                        href="https://github.com/memvid/memvid/pull/178"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-orange-600 hover:underline underline-offset-4"
-                        >memvid#178</a
-                    >
-                </li>
-            </ul>
-        </section>
-
-
         <script>
-            // Theme always starts white on load; toggle only changes the current view.
-            document
-                .getElementById("theme-toggle")
-                .addEventListener("click", () => {
-                    document.documentElement.classList.toggle("dark");
-                });
             lucide.createIcons();
         </script>
     </body>

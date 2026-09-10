@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,23 +23,29 @@
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@1.17.0"></script>
+    <script src="../assets/theme.js"></script>
 
     <style>
+      html {
+        background-color: #ffffff;
+      }
+      html.dark,
       html.dark body {
-        background-color: #0a0a0a;
+        background-color: #0d1117;
+        color-scheme: dark;
       }
       html.dark .text-gray-900,
       html.dark .text-gray-800,
       html.dark .text-gray-700 {
-        color: #ededed;
+        color: #e6edf3;
       }
       html.dark .text-gray-600,
       html.dark .text-gray-500 {
-        color: #a1a1aa;
+        color: #9da7b1;
       }
       html.dark .border-gray-200,
       html.dark .border-gray-300 {
-        border-color: #262626;
+        border-color: #30363d;
       }
       .theme-icon-moon {
         display: none;
@@ -740,7 +746,7 @@
             title="A chart of speed over the decades: processor speed sprints upward since 1975 while memory speed crawls, opening a widening gap known as the memory wall."
             loading="lazy"
             class="w-full rounded-lg"
-            style="height: 440px; border: 0; display: block;"
+            style="height: 440px; border: 0; display: block; background: #0f1117;"
           ></iframe>
           <figcaption class="text-sm text-gray-500 mt-2 text-center">
             Two curves pulling apart: compute raced ahead while memory speed
@@ -1259,7 +1265,7 @@
             title="Interactive DRAM row buffer explainer: step through a row miss, a row hit, and a row switch to see why opening a row is slow while reading more columns from it is cheap."
             loading="lazy"
             class="w-full rounded-lg"
-            style="height: 668px; border: 0; display: block;"
+            style="height: 668px; border: 0; display: block; background: #0f1117;"
           ></iframe>
           <figcaption class="text-sm text-gray-500 mt-2 text-center">
             Opening a whole row is the slow part. Once it's sitting in the row
@@ -4443,12 +4449,6 @@ struct counters c;
         });
       });
 
-      var themeToggle = document.getElementById("theme-toggle");
-      if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-          document.documentElement.classList.toggle("dark");
-        });
-      }
       try {
         if (window.lucide) lucide.createIcons();
       } catch (e) {}

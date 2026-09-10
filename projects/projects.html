@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,23 +23,29 @@
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@1.17.0"></script>
+    <script src="../assets/theme.js"></script>
 
     <style>
+      html {
+        background-color: #ffffff;
+      }
+      html.dark,
       html.dark body {
-        background-color: #0a0a0a;
+        background-color: #0d1117;
+        color-scheme: dark;
       }
       html.dark .text-gray-900,
       html.dark .text-gray-800,
       html.dark .text-gray-700 {
-        color: #ededed;
+        color: #e6edf3;
       }
       html.dark .text-gray-600,
       html.dark .text-gray-500 {
-        color: #a1a1aa;
+        color: #9da7b1;
       }
       html.dark .border-gray-200,
       html.dark .border-gray-300 {
-        border-color: #262626;
+        border-color: #30363d;
       }
       .theme-icon-moon {
         display: none;
@@ -74,9 +80,6 @@
       }
       .project-card:nth-child(2) {
         animation-delay: 0.25s;
-      }
-      .project-card:nth-child(3) {
-        animation-delay: 0.4s;
       }
       .project-card:hover {
         transform: translateY(-4px);
@@ -167,7 +170,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="hover:text-orange-600 transition"
-                >Lumen</a
+                >Lumen: Programming Language &amp; Compiler</a
               >
             </h3>
             <a
@@ -182,16 +185,26 @@
           <ul
             class="mt-2 space-y-1.5 text-gray-700 leading-relaxed list-disc list-outside pl-5 marker:text-orange-600"
           >
-            <li>Statically-typed language and compiler in idiomatic Rust.</li>
-            <li>Full pipeline: lexer, parser, name resolution, type checker, typed HIR, optimizer, codegen.</li>
-            <li>Runs on a stack-based bytecode virtual machine.</li>
-            <li>CFG mid-level IR, C transpiler, and bytecode verifier.</li>
-            <li>Rich diagnostics with error codes and multi-span labels.</li>
+            <li>
+              Designed Lumen, a <strong class="font-semibold text-gray-900">statically typed
+              language</strong> with functions, arrays, structs, tuples, and
+              literal-pattern matching.
+            </li>
+            <li>
+              Built a <strong class="font-semibold text-gray-900">safe-Rust compiler</strong>
+              with typed HIR, CFG-based MIR, multi-level optimizations, a
+              bytecode VM, and a scalar C99 backend.
+            </li>
+            <li>
+              Added <strong class="font-semibold text-gray-900">bytecode verification and
+              VM–MIR differential testing</strong> across 11 programs; all 330
+              tests pass.
+            </li>
           </ul>
           <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
             <span class="px-2 py-0.5 rounded-full border border-gray-300">Rust</span>
             <span class="px-2 py-0.5 rounded-full border border-gray-300">Compiler</span>
-            <span class="px-2 py-0.5 rounded-full border border-gray-300">Type system</span>
+            <span class="px-2 py-0.5 rounded-full border border-gray-300">Typed IR</span>
             <span class="px-2 py-0.5 rounded-full border border-gray-300">Bytecode VM</span>
           </div>
           <a
@@ -206,7 +219,7 @@
         </li>
 
         <!-- Chess Engine -->
-        <li class="project-card border-b border-gray-200 pb-8">
+        <li class="project-card pb-2">
           <div class="flex items-start justify-between gap-4">
             <h3 class="text-lg font-semibold">
               <a
@@ -214,7 +227,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="hover:text-orange-600 transition"
-                >Rust Chess Engine</a
+                >Rust Chess Engine: Search, State Management, and UCI</a
               >
             </h3>
             <a
@@ -229,11 +242,20 @@
           <ul
             class="mt-2 space-y-1.5 text-gray-700 leading-relaxed list-disc list-outside pl-5 marker:text-orange-600"
           >
-            <li>Hand-written engine in safe Rust, no <code>unsafe</code>, no chess crates.</li>
-            <li>Perft-verified legal move generation.</li>
-            <li>Iterative-deepening PVS: transposition table, quiescence, null-move, LMR.</li>
-            <li>Tapered PeSTO piece-square evaluation.</li>
-            <li>UCI interface, PGN/SAN, opening book, and terminal UI.</li>
+            <li>
+              Engineered <strong class="font-semibold text-gray-900">reversible make/unmake</strong>
+              with incremental 64-bit Zobrist hashing on a 0x88 board.
+            </li>
+            <li>
+              Implemented <strong class="font-semibold text-gray-900">iterative-deepening PVS</strong>
+              with TT, quiescence/SEE, null-move pruning, and LMR.
+            </li>
+            <li>
+              Three-run median: <strong class="font-semibold text-gray-900">27.9M
+              perft nodes/s on 193.7M-node Kiwipete depth-5</strong>
+              (single-threaded release, i7-11700F). Matched six canonical
+              positions and passed 145 tests.
+            </li>
           </ul>
           <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
             <span class="px-2 py-0.5 rounded-full border border-gray-300">Rust</span>
@@ -251,60 +273,10 @@
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
         </li>
-
-        <!-- Inference CUDA Kernels -->
-        <li class="project-card pb-2">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-lg font-semibold">
-              <a
-                href="https://github.com/Abhisheklearn12/inference-cuda-kernels"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-orange-600 transition"
-                >High Perf. Inference CUDA Kernels</a
-              >
-            </h3>
-            <a
-              href="https://github.com/Abhisheklearn12/inference-cuda-kernels"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Inference CUDA Kernels on GitHub"
-              class="shrink-0 text-gray-500 hover:text-orange-600 transition"
-              ><i data-lucide="github" class="w-5 h-5"></i
-            ></a>
-          </div>
-          <ul
-            class="mt-2 space-y-1.5 text-gray-700 leading-relaxed list-disc list-outside pl-5 marker:text-orange-600"
-          >
-            <li>Step-by-step optimized CUDA kernels for the core operations of LLM inference.</li>
-            <li>Five ops (GEMV, Softmax, RMSNorm, SiLU, attention decode), each a progression from a naive kernel to an optimized one.</li>
-            <li>Memory-bandwidth bound: every optimization chases the 360 GB/s DRAM bandwidth, not FLOPS.</li>
-            <li>Verified against a double-precision CPU reference across many shapes and edge cases; all 161 checks pass.</li>
-            <li>Written for and measured on an NVIDIA RTX 3060 12GB (Ampere GA106, sm_86).</li>
-          </ul>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
-            <span class="px-2 py-0.5 rounded-full border border-gray-300">CUDA</span>
-            <span class="px-2 py-0.5 rounded-full border border-gray-300">LLM inference</span>
-            <span class="px-2 py-0.5 rounded-full border border-gray-300">GPU kernels</span>
-            <span class="px-2 py-0.5 rounded-full border border-gray-300">Performance</span>
-          </div>
-          <a
-            href="https://github.com/Abhisheklearn12/inference-cuda-kernels"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="repo-link mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600"
-          >
-            View on GitHub
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-        </li>
       </ul>
     </section>
 
     <script>
-      document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-      });
       lucide.createIcons();
     </script>
   </body>

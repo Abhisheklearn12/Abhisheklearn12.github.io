@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,6 +23,7 @@
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@1.17.0"></script>
+    <script src="../assets/theme.js"></script>
 
     <style>
       /* Reading font (serif) across the whole page: nav + list */
@@ -33,21 +34,26 @@
       nav {
         font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       }
+      html {
+        background-color: #ffffff;
+      }
+      html.dark,
       html.dark body {
-        background-color: #0a0a0a;
+        background-color: #0d1117;
+        color-scheme: dark;
       }
       html.dark .text-gray-900,
       html.dark .text-gray-800,
       html.dark .text-gray-700 {
-        color: #ededed;
+        color: #e6edf3;
       }
       html.dark .text-gray-600,
       html.dark .text-gray-500 {
-        color: #a1a1aa;
+        color: #9da7b1;
       }
       html.dark .border-gray-200,
       html.dark .border-gray-300 {
-        border-color: #262626;
+        border-color: #30363d;
       }
       .theme-icon-moon {
         display: none;
@@ -131,9 +137,6 @@
     </section>
 
     <script>
-      document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-      });
       lucide.createIcons();
     </script>
   </body>
